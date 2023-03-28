@@ -1,0 +1,7 @@
+{
+  "/students":{
+    "target":"http://localhost:8081/api/students",
+    "secure":false,
+    "logLevel":"debug"
+  }
+}

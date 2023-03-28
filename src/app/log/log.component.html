@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assurance App Login</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="fb-root"></div>
+
+        <div class="container">
+      <div style="margin-top: 10%;">
+        <div class="row justify-content-center ">
+          <div class="col-md-6 col-lg-4">
+            <h3 class="text-center mb-3">Assurance App Login</h3>
+            <form #f="ngForm" (ngSubmit)="login(f.value)">
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" name="email" id="username" [(ngModel)]="email" (blur)="emailFocused=true" required>
+                <span class="error-message" *ngIf="emailFocused && !email">Please enter your email</span>
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password"
+                (blur)="emailFocused==true? passwordFocused=true:passwordFocused=false"  required>
+                <span class="error-message" *ngIf="passwordFocused && !password">Please enter your password</span>
+              </div>
+              <div class="form-group">
+              <button type="submit" class="mx-auto"  [disabled]="!email || !password" class="btn btn-primary btn-block">Login</button>
+                </div>
+                <div class="form-group" style="justify-content: center;">
+
+                  <div (click)="signInWithFB()" class="fb-login-button text-center col facebook" data-width="" data-size="medium"
+                  data-auto-logout-link="false" data-use-continue-as="true"></div>
+
+                </div>
+                  <div class="form-group" style="justify-content: center;"class="parent-container">
+                  <div id="g_id_onload" class="col text-center"
+
+                  data-client_id="660220038969-1gl4foc68ueti12oheh6tpcfshpgb70p.apps.googleusercontent.com"
+                  data-context="signin"
+                  data-ux_mode="popup"
+                  data-itp_support="true" (click)="signInWithGoogle()">
+                </div>
+                  <div *ngIf="!isLogged" class="g_id_signin col text-center "
+
+                    data-type="standard"
+                    data-shape="pill"
+                    data-theme="outline"
+                    data-text="signin_with"
+                    data-size="medium"
+                    data-logo_alignment="right" (click)="signInWithGoogle()">
+                  </div>
+
+                  </div>
+
+
+
+            </form>
+            <hr>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    <button *ngIf="isLogged" (click)="signOut()">singout</button>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
